@@ -29,18 +29,20 @@ const Home = () => {
 
   const handleSave = (employee) => {
     const lastId = Math.max(...mockEmployees.map((ele) => ele.id));
-    const newEmployee = { id: lastId + 1, ...employee };
+    const newId = lastId === -Infinity ? 0 : lastId + 1;
+    const newEmployee = { id: newId, ...employee };
     const newEmployees = [...mockEmployees, newEmployee];
     setMockEmployees(newEmployees);
+    console.log(newId)
   };
 
   const handleDelete = (id) => {
     const filterEmployees = mockEmployees.filter((employee) => employee.id !== id);
     setMockEmployees(filterEmployees);
+    console.log(filterEmployees)
   };
 
   const [sector, setSector] = useState("other");
-
 
   return (
     <div>
